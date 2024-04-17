@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PanGamez", "PanGamez\PanGamez.csproj", "{DF352E9C-69ED-4DF9-84D7-C5306DAB237B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF352E9C-69ED-4DF9-84D7-C5306DAB237B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF352E9C-69ED-4DF9-84D7-C5306DAB237B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF352E9C-69ED-4DF9-84D7-C5306DAB237B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF352E9C-69ED-4DF9-84D7-C5306DAB237B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5EB13A85-9A38-4A61-B77D-855DFAC70A0E}
+	EndGlobalSection
+EndGlobal
