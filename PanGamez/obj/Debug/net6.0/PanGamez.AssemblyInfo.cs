@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PanGamez")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+afafab3286da3993ecf67840616f7498131f4e92")]
 [assembly: System.Reflection.AssemblyProductAttribute("PanGamez")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PanGamez")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
