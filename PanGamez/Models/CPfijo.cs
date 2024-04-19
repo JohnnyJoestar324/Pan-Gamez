@@ -10,7 +10,8 @@
 
         public int CalculoCP(int QQ, int SS)
         {
-            //Primer plateamiento   
+            //Primer plateamiento - Replantear metodos
+            //
             VolumenOptimoDePedido = QQ;
             StockDeSeguridad = SS;
 
