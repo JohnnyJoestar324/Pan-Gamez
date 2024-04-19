@@ -3,77 +3,120 @@
 @{
     ViewData["Title"] = "Calcular Costo de Mantenimiento";
 }
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Manejar el cambio en el campo de selección
+        $('#conoceNumeroFallas').change(function () {
+            // Si se selecciona "Sí", limpiar los campos de MTBF y HorasTrabajo
+            if ($(this).val() === 'Sí') {
+                $('#Mtbf').val('');
+                $('#HorasTrabajo').val('');
+            }
+            // Si se selecciona "No", limpiar el campo de NumeroFallas
+            else {
+                $('#NumeroFallas').val('');
+            }
+        });
+    });
+</script> 
 
 <h1>Calcular Costo de Mantenimiento</h1>
 
-@if (Model != null && ViewData["MaintenanceCost"] != null)
-{
-    <h2>Resultado del Costo de Mantenimiento:</h2>
-    <p>Total: @ViewData["MaintenanceCost"]</p>
-}
-else
-{
-    <form asp-action="Create">
-        <div class="form-group">
-            <label asp-for="HorasTrabajo">Número de horas de trabajo:</label>
-            <input asp-for="HorasTrabajo" class="form-control" />
-            <span asp-validation-for="HorasTrabajo" class="text-danger"></span>
-        </div>
+<form id="costoMantenimientoForm" asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="conoceNumeroFallas">¿Conoce el número de fallas?</label>
+        <select class="form-control" id="conoceNumeroFallas">
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+        </select>
+    </div>
 
-        <div class="form-group">
-            <label asp-for="Mtbf">MTBF (Mean Time Between Failures):</label>
-            <input asp-for="Mtbf" class="form-control" />
-            <span asp-validation-for="Mtbf" class="text-danger"></span>
-        </div>
-
+    <!-- Campos para el caso en que se conoce el número de fallas -->
+    <div id="camposConNumeroFallas">
         <div class="form-group">
             <label asp-for="NumeroFallas">Número de fallas:</label>
             <input asp-for="NumeroFallas" class="form-control" />
             <span asp-validation-for="NumeroFallas" class="text-danger"></span>
         </div>
+    </div>
 
+    <!-- Campos para el caso en que no se conoce el número de fallas -->
+    <div id="camposSinNumeroFallas" style="display: none;">
         <div class="form-group">
-            <label asp-for="DuracionTarea">Duración de la tarea (en horas):</label>
-            <input asp-for="DuracionTarea" class="form-control" />
-            <span asp-validation-for="DuracionTarea" class="text-danger"></span>
+            <label asp-for="HorasTrabajo">Teiempo de vida del sistema:</label>
+            <input asp-for="HorasTrabajo" class="form-control" />
+            <span asp-validation-for="HorasTrabajo" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <label asp-for="DuracionTarea">Costo por hora de trabajo:</label>
-            <input asp-for="DuracionTarea" class="form-control" />
-            <span asp-validation-for="DuracionTarea" class="text-danger"></span>
+            <label asp-for="Mtbf">MTBF:</label>
+            <input asp-for="Mtbf" class="form-control" />
+            <span asp-validation-for="Mtbf" class="text-danger"></span>
         </div>
+    </div>
 
-        <div class="form-group">
-            <label asp-for="Repuestos">Precio de repuestos:</label>
-            <input asp-for="Repuestos" class="form-control" />
-            <span asp-validation-for="Repuestos" class="text-danger"></span>
-        </div>
+    <!-- Campos comunes -->
+    <div class="form-group">
+        <label asp-for="DuracionTarea">Duración de la tarea (en horas):</label>
+        <input asp-for="DuracionTarea" class="form-control" />
+        <span asp-validation-for="DuracionTarea" class="text-danger"></span>
+    </div>
 
-        <div class="form-group">
-            <label asp-for="TareasAdicionales">Costo de tareas adicionales:</label>
-            <input asp-for="TareasAdicionales" class="form-control" />
-            <span asp-validation-for="TareasAdicionales" class="text-danger"></span>
-        </div>
+    <div class="form-group">
+        <label asp-for="CostoHoraTrabajo">Costo por hora de trabajo:</label>
+        <input asp-for="CostoHoraTrabajo" class="form-control" />
+        <span asp-validation-for="CostoHoraTrabajo" class="text-danger"></span>
+    </div>
 
-        <div class="form-group">
-            <label asp-for="RetrasoLogistico">Costo de retraso logístico:</label>
-            <input asp-for="RetrasoLogistico" class="form-control" />
-            <span asp-validation-for="RetrasoLogistico" class="text-danger"></span>
-        </div>
+    <div class="form-group">
+        <label asp-for="Repuestos">Precio de repuestos:</label>
+        <input asp-for="Repuestos" class="form-control" />
+        <span asp-validation-for="Repuestos" class="text-danger"></span>
+    </div>
 
-        <div class="form-group">
-            <label asp-for="CostoUnitarioParada">Costo unitario por parada:</label>
-            <input asp-for="CostoUnitarioParada" class="form-control" />
-            <span asp-validation-for="CostoUnitarioParada" class="text-danger"></span>
-        </div>
+    <div class="form-group">
+        <label asp-for="TareasAdicionales">Costo de tareas operacionales:</label>
+        <input asp-for="TareasAdicionales" class="form-control" />
+        <span asp-validation-for="TareasAdicionales" class="text-danger"></span>
+    </div>
 
-        <div class="form-group">
-            <label asp-for="CostoFallaUnica">Costo de falla vez única:</label>
-            <input asp-for="CostoFallaUnica" class="form-control" />
-            <span asp-validation-for="CostoFallaUnica" class="text-danger"></span>
-        </div>
+    <div class="form-group">
+        <label asp-for="RetrasoLogistico">Retraso logístico (en horas):</label>
+        <input asp-for="RetrasoLogistico" class="form-control" />
+        <span asp-validation-for="RetrasoLogistico" class="text-danger"></span>
+    </div>
 
-        <button type="submit" class="btn btn-primary">Calcular</button>
-    </form>
+    <div class="form-group">
+        <label asp-for="CostoUnitarioParada">Costo unitario por parada:</label>
+        <input asp-for="CostoUnitarioParada" class="form-control" />
+        <span asp-validation-for="CostoUnitarioParada" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CostoFallaUnica">Costo de falla vez única:</label>
+        <input asp-for="CostoFallaUnica" class="form-control" />
+        <span asp-validation-for="CostoFallaUnica" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Calcular</button>
+</form>
+@if (ViewData["MaintenanceCost"] != null)
+{
+    <h2>Costo de Mantenimiento Correctivo:</h2>
+    <p>Total: @ViewData["MaintenanceCost"]</p>
 }
+
+<script>
+    // Manejar cambios en la selección de "¿Conoce el número de fallas?"
+    document.getElementById("conoceNumeroFallas").addEventListener("change", function () {
+        var seleccion = this.value;
+        if (seleccion === "si") {
+            document.getElementById("camposConNumeroFallas").style.display = "block";
+            document.getElementById("camposSinNumeroFallas").style.display = "none";
+        } else {
+            document.getElementById("camposConNumeroFallas").style.display = "none";
+            document.getElementById("camposSinNumeroFallas").style.display = "block";
+        }
+    });
+</script>
