@@ -2,7 +2,7 @@
 {
     public class CPfijo
     {
-        public int InventarioPromedio { get; set; }
+        
         //Valor en Q
         public int VolumenOptimoDePedido { get; set; }
         //Varlos en SS
