@@ -3,32 +3,10 @@
     public class CPfijo
     {
         public int InventarioPromedio { get; set; }
-
+        //Valor en Q
         public int VolumenOptimoDePedido { get; set; }
-
+        //Varlos en SS
         public int StockDeSeguridad { get; set; }
 
-        public int CalculoCP(int QQ, int SS)
-        {
-            //Primer plateamiento - Replantear metodos
-            //
-            VolumenOptimoDePedido = QQ;
-            StockDeSeguridad = SS;
-
-            var resultado = (QQ / 2) + SS;
-            return resultado;
-
-
-        }
-        public int Rotacion(int IP)
-        {
-            InventarioPromedio = IP;
-            if (InventarioPromedio > 0)
-            {
-                return InventarioPromedio / 2;
-            }
-            else { return InventarioPromedio + 1; }
-
-        }
     }
 }
