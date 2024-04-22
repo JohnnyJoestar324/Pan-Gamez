@@ -5,3 +5,26 @@
 }
 <h1>Calcular Costo Promedio Fijo</h1>
 
+<form asp-action="Calculate">
+
+    <div class="form-group">
+        <label asp-for="Demanda">Demanda</label>
+        <input asp-for="Demanda" class="form-control" />
+        <span asp-validation-for="Demanda" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="InventarioPedido">Cantidad de pedido de Inventario</label>
+        <input asp-for="InventarioPedido" class="form-control" />
+        <span asp-validation-for="InventarioPedido" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="InventarioSeguridad">Inventario de Seguridad</label>
+        <input asp-for="InventarioSeguridad" class="form-control" />
+        <span asp-validation-for="InventarioSeguridad" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Calcular Rotación</button>
+</form>
+@if (ViewData["CPfijo"] != null)
+{
+    <p>Resultado: @ViewData["CPfijo"]</p>
+}
