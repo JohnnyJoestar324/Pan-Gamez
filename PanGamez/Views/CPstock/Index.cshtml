@@ -4,3 +4,27 @@
     ViewData["Title"] = "Calcular Costo Promedio por Stock";
 }
 <h1>Calcular Costo Promedio por Stock</h1>
+
+<form asp-action="Calculate">
+    
+    <div class="form-group">
+        <label asp-for="Demanda">Demanda</label>
+        <input asp-for="Demanda" class="form-control"/>
+        <span asp-validation-for="Demanda" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="TiempoReposicion">Tiempo de Reposición</label>
+        <input asp-for="TiempoReposicion" class="form-control"/>
+        <span asp-validation-for="TiempoReposicion" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="InventarioSeguridad">Inventario de Seguridad</label>
+        <input asp-for="InventarioSeguridad" class="form-control"/>
+        <span asp-validation-for="InventarioSeguridad" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Calcular Rotación</button>
+</form>
+@if (ViewData["CPstock"] !=null)
+{
+    <p>Resultado: @ViewData["CPstock"]</p>
+}
