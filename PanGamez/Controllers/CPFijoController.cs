@@ -23,7 +23,7 @@ namespace PanGamez.Controllers
 
                 int SS = model.InventarioSeguridad;
 
-                //Calcular Costo Promedio por Stock
+                //Calcular Costo Promedio por Fijo
                 int I = (Q / 2) + SS;
 
                 //Calculo de retacion de inventario
