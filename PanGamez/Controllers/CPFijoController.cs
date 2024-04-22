@@ -24,7 +24,7 @@ namespace PanGamez.Controllers
                 int SS = model.InventarioSeguridad;
 
                 //Calcular Costo Promedio por Stock
-                int I = (Q * 2) / SS;
+                int I = (Q / 2) + SS;
 
                 //Calculo de retacion de inventario
                 int RotacionInventario = D / I;
