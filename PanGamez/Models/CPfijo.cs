@@ -3,10 +3,13 @@
     public class CPfijo
     {
         
+        //Valor en Inventario (D)
+        public int Demanda { get; set; }
+
         //Valor en Q
-        public int VolumenOptimoDePedido { get; set; }
+        public int InventarioPedido { get; set; }
         //Varlos en SS
-        public int StockDeSeguridad { get; set; }
+        public int InventarioSeguridad { get; set; }
 
     }
 }

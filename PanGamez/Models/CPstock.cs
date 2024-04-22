@@ -2,11 +2,12 @@
 {
     public class CPstock
     {
-        //valor en D
+        
+        //Valor en Inventario (D)
         public int Demanda { get; set; }
         //Valor en T
-        public int Periodicidad { get; set; }
+        public int TiempoReposicion { get; set; }
         //Valor en SS
-        public int Unidades { get; set; }
+        public int InventarioSeguridad { get; set; }
     }
 }
