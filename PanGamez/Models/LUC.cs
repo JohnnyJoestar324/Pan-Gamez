@@ -1,15 +1,19 @@
-﻿namespace PanGamez.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace PanGamez.Models
 {
-    public class LUC
+    public partial class Luc
     {
+        public short Idluc { get; set; }
+        public short Idproducto { get; set; }
         public int RequerimientoBruto { get; set; }
         public int Periodo { get; set; }
-        public double CostoMantenimiento { get; set; }
-        public double costoDeOrdenar { get; set; }
-        public double CostoTotal { get; set; }
-        public double CostoUTotalU{ get; set;}
+        public decimal CostoMantenimiento { get; set; }
+        public decimal CostoDeOrdenar { get; set; }
+        public decimal CostoTotal { get; set; }
+        public decimal CostoTotalU { get; set; }
 
-
-
+        public virtual Producto IdproductoNavigation { get; set; } = null!;
     }
 }

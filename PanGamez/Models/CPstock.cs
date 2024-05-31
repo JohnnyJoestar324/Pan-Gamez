@@ -1,13 +1,16 @@
-﻿namespace PanGamez.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace PanGamez.Models
 {
-    public class CPstock
+    public partial class Cpstock
     {
-        
-        //Valor en Inventario (D)
+        public short Idcpstock { get; set; }
+        public short Idproducto { get; set; }
         public int Demanda { get; set; }
-        //Valor en T
-        public int TiempoReposicion { get; set; }
-        //Valor en SS
+        public int TiempoReposo { get; set; }
         public int InventarioSeguridad { get; set; }
+
+        public virtual Producto IdproductoNavigation { get; set; } = null!;
     }
 }

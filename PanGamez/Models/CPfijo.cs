@@ -1,14 +1,16 @@
-﻿namespace PanGamez.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace PanGamez.Models
 {
-    public class CPfijo
+    public partial class Cpfijo
     {
-        
-        //Valor en Inventario (D)
+        public short Idcpfijo { get; set; }
+        public short Idproducto { get; set; }
         public int Demanda { get; set; }
-        //Valor en Q
         public int InventarioPedido { get; set; }
-        //Varlos en SS
         public int InventarioSeguridad { get; set; }
 
+        public virtual Producto IdproductoNavigation { get; set; } = null!;
     }
 }
