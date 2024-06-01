@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using PanGamez.Models;
 
 namespace PanGamez.Data
 {
@@ -9,5 +10,14 @@ namespace PanGamez.Data
             : base(options)
         {
         }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Seed();
+            base.OnModelCreating(modelBuilder);
+        }
+
+
     }
 }
